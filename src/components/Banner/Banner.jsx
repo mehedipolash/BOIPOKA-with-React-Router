@@ -1,16 +1,26 @@
 import React from 'react';
-import bookImage from '../../assets/books.jpg';
+import bookImage from '../../assets/book.png';
 
 const Banner = () => {
   return (
-    <div className='flex justify-around items-center'>
-      <div>
-        <h1>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolores illo libero nobis, mollitia, quisquam natus consequuntur quae laudantium sapiente possimus, velit culpa at? Odio, facilis?</h1>
-        <button className='btn btn-primary'>Test</button>
+    <div className="hero bg-[#1A2026] rounded-3xl py-15">
+      <div className="hero-content flex-col lg:flex-row-reverse gap-8">
+        <img
+          src={bookImage}
+          alt="Book"
+          className="max-w-sm rounded-xl shadow-2xl"
+        />
+        <div>
+          <h1 className="text-5xl font-bold text-white">
+            Books to freshen up your bookshelf
+          </h1>
+          <div className="mt-6">
+            <button className="btn btn-success text-white hover:bg-green-600">
+              Get Started
+            </button>
+          </div>
+        </div>
       </div>
-      <div>
-        <img src={bookImage}></img>
-       </div>
     </div>
   );
 };
