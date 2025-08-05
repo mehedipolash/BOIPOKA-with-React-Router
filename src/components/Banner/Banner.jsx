@@ -14,8 +14,9 @@ const Banner = () => {
           <h1 className="text-5xl font-bold text-white">
             Books to freshen up your bookshelf
           </h1>
+          <br />
           <div className="mt-6">
-            <button className="btn btn-success text-white hover:bg-green-600">
+            <button className="btn btn-primary text-white hover:bg-green-600">
               Get Started
             </button>
           </div>
