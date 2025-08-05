@@ -20,6 +20,7 @@ const Books = ({data}) => {
   return (
     <div>
       <h1 className="text-3xl text-center p-6">Book is your best friend</h1>
+      
       <Suspense fallback={<span>loading..</span>}>
         
         {/* <Book bookPromise={bookPromise}></Book> */}
