@@ -1,12 +1,21 @@
-import React from 'react';
-import { useLoaderData, useParams } from 'react-router-dom'; // Updated import
+import React, { useEffect } from 'react';
+import { useLoaderData, useParams } from 'react-router-dom';
 import { addToStoreDB } from '../../Utility/addToDb';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'; // don't forget this import
+
+const MySwal = withReactContent(Swal);
 
 const BookDetails = () => {
   const { id } = useParams();
   const data = useLoaderData();
-  
-  // Safely handle missing book
+
+  useEffect(() => {
+    toast('Wow so easy!');
+  }, []);
+
   if (!data || !Array.isArray(data)) {
     return <div className="text-center p-8">Loading book data...</div>;
   }
@@ -30,7 +39,14 @@ const BookDetails = () => {
   } = singleBook;
 
   const handleMarkAsRead = id => {
+    // You can enable this Swal alert if you want
+    // MySwal.fire({
+    //   title: 'Good job!',
+    //   text: 'You clicked the button!',
+    //   icon: 'success',
+    // });
     addToStoreDB(id);
+    toast.success('Marked as read!');
   };
 
   return (
@@ -43,6 +59,7 @@ const BookDetails = () => {
 
       <div className="flex-1">
         <h1 className="text-4xl font-bold">{bookName}</h1>
+        <ToastContainer />
         <br />
         <h2 className="text-lg text-amber-300">By: {author}</h2>
         <br />
@@ -59,7 +76,7 @@ const BookDetails = () => {
           {tags.map((tag, index) => (
             <span
               key={index}
-              className="inline-block border border-green-600 px-3 py-1 mr-2 mb-1 rounded-full text-sm" // Added border class
+              className="inline-block border border-green-600 px-3 py-1 mr-2 mb-1 rounded-full text-sm"
             >
               {tag}
             </span>

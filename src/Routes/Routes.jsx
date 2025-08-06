@@ -6,6 +6,7 @@ import ErrorPage from '../pages/ErrorPage/ErrorPage';
 import Home from '../pages/Home/Home';
 import About from '../pages/About/About';
 import BookDetails from '../pages/bookDetails/bookDetails';
+import ReadList from '../pages/ReadList/ReadList';
 
 export const router = createBrowserRouter([
   {
@@ -18,7 +19,7 @@ export const router = createBrowserRouter([
         path: '/',
         loader: async () => {
           const res = await fetch('booksData.json');
-          return res.json(); 
+          return res.json();
         },
         Component: Home,
       },
@@ -33,6 +34,15 @@ export const router = createBrowserRouter([
           return res.json();
         },
         Component: BookDetails,
+      },
+
+      {
+        path: 'readList',
+        loader: async () => {
+          const res = await fetch('booksData.json');
+          return res.json();
+        },
+        Component: ReadList,
       },
     ],
   },
