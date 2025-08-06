@@ -6,7 +6,7 @@ const Book = ({ singleBook }) => {
   // const data = use(bookPromise);
   // console.log(data);
 
-  console.log(singleBook);
+  // console.log(singleBook);
 
   const {
     bookName,
@@ -22,6 +22,8 @@ const Book = ({ singleBook }) => {
 
   return (
     <Link to={`/bookDetails/${bookId}`}>
+
+
       <div className="card bg-base-100 w-96 shadow-sm border p-6">
         <figure className="p-4 bg-teal-950 w-2/3 mx-auto ">
           <img className="h-[166px]" src={image} alt="Shoes" />
@@ -29,7 +31,7 @@ const Book = ({ singleBook }) => {
         <div className="card-body">
           <div className="flex justify-center gap-12">
             {tags.map(tag => (
-              <button>{tag}</button>
+              <button key={tag}>{tag}</button>
             ))}
           </div>
 
@@ -47,6 +49,8 @@ const Book = ({ singleBook }) => {
           </div>
         </div>
       </div>
+
+      
     </Link>
   );
 };

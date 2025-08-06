@@ -1,5 +1,6 @@
 import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router';
+
 import Root from '../pages/Root/Root';
 import ErrorPage from '../pages/ErrorPage/ErrorPage';
 import Home from '../pages/Home/Home';
@@ -10,12 +11,15 @@ export const router = createBrowserRouter([
   {
     path: '/',
     Component: Root,
-    errorElement: <ErrorPage></ErrorPage>,
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true,
-        loader: () => fetch('booksData.json'),
         path: '/',
+        loader: async () => {
+          const res = await fetch('booksData.json');
+          return res.json(); 
+        },
         Component: Home,
       },
       {
@@ -24,8 +28,12 @@ export const router = createBrowserRouter([
       },
       {
         path: '/bookDetails/:id',
-        Component:BookDetails
-      }
+        loader: async () => {
+          const res = await fetch('booksData.json');
+          return res.json();
+        },
+        Component: BookDetails,
+      },
     ],
   },
 ]);
