@@ -24,7 +24,7 @@ const Book = ({ singleBook }) => {
   return (
     <Link to={`/bookDetails/${bookId}`}>
       <div className="card bg-base-100 w-full shadow-sm border p-6">
-        <figure className="p-4 bg-teal-950 w-2/3 mx-auto">
+        <figure className="p-4 bg-cyan-900 w-2/3 mx-auto">
           <img className="h-[166px]" src={image} alt="Shoes" />
         </figure>
         <div className="card-body">
