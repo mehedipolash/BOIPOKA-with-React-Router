@@ -1,12 +1,11 @@
 import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router';
-
 import Root from '../pages/Root/Root';
 import ErrorPage from '../pages/ErrorPage/ErrorPage';
 import Home from '../pages/Home/Home';
 import About from '../pages/About/About';
-import BookDetails from '../pages/bookDetails/bookDetails';
 import ReadList from '../pages/ReadList/ReadList';
+import BookDetails from '../pages/BookDetails/BookDetails';
 
 export const router = createBrowserRouter([
   {
@@ -16,12 +15,9 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        path: '/',
-        loader: async () => {
-          const res = await fetch('booksData.json');
-          return res.json();
-        },
         Component: Home,
+        hydrateFallbackElement: <p>Please wait...</p>,
+        loader: () => fetch('../../booksData.json'), //relative path
       },
       {
         path: '/about',
@@ -29,21 +25,18 @@ export const router = createBrowserRouter([
       },
       {
         path: '/bookDetails/:id',
-        loader: async () => {
-          const res = await fetch('booksData.json');
-          return res.json();
-        },
         Component: BookDetails,
+        hydrateFallbackElement: <p>Please wait...</p>,
+        // loader: () => fetch('../../booksData.json'),
+        loader: () => fetch('/booksData.json').then(res => res.json()), //better 
       },
-
       {
         path: 'readList',
-        loader: async () => {
-          const res = await fetch('booksData.json');
-          return res.json();
-        },
         Component: ReadList,
+        hydrateFallbackElement: <p>Please wait...</p>,
+        loader: () => fetch('../../booksData.json'),
       },
     ],
   },
 ]);
+

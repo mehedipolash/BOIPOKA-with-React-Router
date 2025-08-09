@@ -12,9 +12,7 @@ const BookDetails = () => {
   const { id } = useParams();
   const data = useLoaderData();
 
-  // useEffect(() => {
-  //   toast('Wow so easy!');
-  // }, []);
+ 
 
   if (!data || !Array.isArray(data)) {
     return <div className="text-center p-8">Loading book data...</div>;
